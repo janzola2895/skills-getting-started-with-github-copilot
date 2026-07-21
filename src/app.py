@@ -19,11 +19,6 @@ current_dir = Path(__file__).parent
 app.mount("/static", StaticFiles(directory=os.path.join(Path(__file__).parent,
           "static")), name="static")
 
-# Validate student is not already signed up
-def validate_student_not_signed_up(activity: dict, email: str):
-    if email in activity["participants"]:
-        raise HTTPException(status_code=400, detail="Student already signed up for this activity")
-
 activities = {
     "Chess Club": {
         "description": "Learn strategies and compete in chess tournaments",
